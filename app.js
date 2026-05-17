@@ -14,6 +14,31 @@ async function informacoesPokedex(pokedex) {
     return dados
 }
 
+function traduzirTipo(tipo) {
+    const tipos = {
+        normal: "Normal",
+        fire: "Fogo",
+        water: "Água",
+        electric: "Elétrico",
+        grass: "Planta",
+        ice: "Gelo",
+        fighting: "Lutador",
+        poison: "Veneno",
+        ground: "Terrestre",
+        flying: "Voador",
+        psychic: "Psíquico",
+        bug: "Inseto",
+        rock: "Pedra",
+        ghost: "Fantasma",
+        dragon: "Dragão",
+        dark: "Sombrio",
+        steel: "Metálico",
+        fairy: "Fada"
+    }
+
+    return tipos[tipo]
+}
+
 function corTipagem(types) {
     const coresTipos = {
         normal: "#A8A77A",
@@ -45,7 +70,7 @@ function corTipagem(types) {
 
         const tipoElemento = document.createElement("p")
 
-        tipoElemento.textContent = nomeTipo
+        tipoElemento.textContent = traduzirTipo(nomeTipo)
         tipoElemento.style.color = coresTipos[nomeTipo]
 
         elementoTipagem.appendChild(tipoElemento)
@@ -156,6 +181,8 @@ async function dados() {
     document.getElementById('regiao').textContent = regiao(dadosPokedex)
    
     document.getElementById('geracao').textContent = geracao(dadosPokedex.generation.name) // geração
+
+    document.getElementById('pesquisar').value = ""
 }
 
 function pokemonEstatico() {
